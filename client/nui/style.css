@@ -1,0 +1,61 @@
+.body {
+    background: transparent;
+}
+
+#window {
+    border-bottom-left-radius: 1%;
+    border-bottom-right-radius: 1%;
+    user-select: none;
+    color: rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    font-size: 2vh;
+    text-align: center;
+    position: fixed;
+    right: 1%;
+    top: 25%;
+    width: 22%;
+    height: 10%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 0px;
+}
+
+#curTime {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#bestTime {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#distance {
+    align-self: center;
+    grid-column: 1 / span 2;
+    grid-row: 2;
+}
+
+#distanceBorder {
+    align-self: center;
+    grid-column: 1 / span 2;
+    grid-row: 3;
+    height: 50%;
+}
+#statusBar {
+    align-self: end;
+    grid-column: 1/span 2;
+    grid-row: 4;
+    background: red;
+    width: 100%;
+    height: 50%;
+    font-size: 0.7vh;
+    bottom: 1%;
+}
+
+.progress-bar {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
