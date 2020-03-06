@@ -13,7 +13,6 @@ namespace cl_dragTimer
 
         private Vector3 curPosition;
         private Vector3 lastPosition;
-        private int ped;
         private double curSpeed;
         private double startTime;
         private double timer;
@@ -47,6 +46,7 @@ namespace cl_dragTimer
                     {
                         if (args[0].ToString().ToLower() == "enable")
                         {
+                            this.ResetFields(false);
                             this.enabled = !this.enabled;
                             SendNuiMessage("{\"menuState\":" + this.enabled.ToString().ToLower() + ", \"setData\":{\"curTime\":" + this.timer + ",\"bestTime\":" + this.bestTime + ",\"distance\":" + this.distance + ",\"goal\":" + this.goalEnd + "}}");
                         }
@@ -78,6 +78,10 @@ namespace cl_dragTimer
                                 });
                             }
                         }
+                        else if (args[0].ToString().ToLower().Equals("reset"))
+                        {
+                            this.ResetFields(true);
+                        }
                     }
                     else
                     {
@@ -88,6 +92,15 @@ namespace cl_dragTimer
                         });
                     }
                 }), false);
+        }
+
+        public void ResetFields(bool resetBest = true)
+        {
+            this.curSpeed = 0;
+            this.startTime = 0;
+            this.timer = 0;
+            this.bestTime = resetBest == true ? 0 : this.bestTime;
+            this.distance = 0;
         }
 
         public async Task HandleTimer()
